@@ -51,32 +51,48 @@ Function Install-HackFonts {
 
 #Update Modules
 if (Get-Module -ListAvailable -Name PSReadLine) {
-    Update-Module -Name PSReadLine -Force
+    Write-Host "PSReadLine Module is installed."
 } 
 else {
+    Write-Host "Installing PSReadLine Module."
     Install-Module -Name PSReadLine -Force
 }
 
 if (Get-Module -ListAvailable -Name PowerShellGet) {
-    Update-Module -Name PowerShellGet -Force
+    Write-Host "PowerShellGet Module is installed."
 } 
 else {
+    Write-Host "Installing PowershellGet Module."
     Install-Module -Name PowerShellGet -Force
 }
 
 if (Get-Module -ListAvailable -Name Terminal-Icons) {
-    Update-Module -Name Terminal-Icons -Force
+    Write-Host "Terminal-Icons Module is installed."
 } 
 else {
+    Write-Host "Installing Terminal-Icons Module."
     Install-Module -Name Terminal-Icons -Repository PSGallery -Force
 }
 
 
-#Install WinGet
-winget install --id Microsoft.WindowsTerminal -e
+#Install Windows Terminal
+if (winget list --id Microsoft.WindowsTerminal) {
+    Write-Host "Windows Terminal is installed."
+} 
+else {
+    Write-Host "Installing Windows Terminal."
+    winget install --id Microsoft.WindowsTerminal -e
+}
 
 #Install Oh-My-Posh
-winget install JanDeDobbeleer.OhMyPosh -s winget
+if (winget list --id JanDeDobbeleer.OhMyPosh) {
+    Write-Host "Oh-My-Posh is installed."
+} 
+else {
+    Write-Host "Installing Oh-My-Posh."
+    winget install JanDeDobbeleer.OhMyPosh -s winget
+}
+
 
 #Find if $PROFILE exists, else create it.
 if (!(Test-Path -Path $PROFILE)) {
@@ -84,6 +100,7 @@ if (!(Test-Path -Path $PROFILE)) {
   }
 
 #Set $PROFILE for PS
+Write-Host "Applying PowerShell Profile Settings"
 Add-Content $PROFILE "Import-Module -Name Terminal-Icons"
 Add-Content $PROFILE "clear"
 Add-Content $PROFILE "oh-my-posh init pwsh | Invoke-Expression"
@@ -93,6 +110,8 @@ Add-Content $PROFILE "oh-my-posh init pwsh --config https://raw.githubuserconten
 Install-HackFonts
 
 #Apply JSON File for Windows Terminal
+
+Write-Host "Applying Windows Terminal Profile Settings"
 $jsonfile = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
-$webContent = Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/kristocopani/dotfiles/main/settings.json'
+$webContent = Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/kristocopani/dotfiles/main/settings.json' -UseBasicParsing
 Set-Content -Path $jsonfile -Value $webContent.Content
