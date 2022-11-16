@@ -73,10 +73,10 @@ else {
 
 
 #Install WinGet
-winget install --id Microsoft.WindowsTerminal -e -h
+winget install --id Microsoft.WindowsTerminal -e
 
 #Install Oh-My-Posh
-winget install JanDeDobbeleer.OhMyPosh -s winget -h
+winget install JanDeDobbeleer.OhMyPosh -s winget
 
 #Find if $PROFILE exists, else create it.
 if (!(Test-Path -Path $PROFILE)) {
