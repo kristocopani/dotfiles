@@ -112,7 +112,7 @@ Add-Content $PROFILE "Import-Module -Name Terminal-Icons"
 Add-Content $PROFILE "Import-Module -Name PSReadline"
 Add-Content $PROFILE "Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete"
 Add-Content $PROFILE "clear"
-Add-Content $PROFILE "oh-my-posh init pwsh --config $ohmyposhjsonpath\theme.json | Invoke-Expression"
+Add-Content $PROFILE "oh-my-posh init pwsh --config '$ohmyposhjsonpath\theme.json' | Invoke-Expression"
 
 #Install Fonts
 Install-HackFonts
