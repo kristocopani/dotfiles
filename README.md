@@ -1,13 +1,13 @@
 # Overview
 
-This repository contains a set of scripts that customizes my Windows Terminal.
+This repository contains a script that customizes my Windows Terminal.
 
 ## PowerShell
 
 From a Windows PowerShell prompt, run the following command:
 
 ```pwsh
-iex "& { $(irm 'https://raw.githubusercontent.com/kristocopani/dotfiles/main/install.ps1)') }"
+iex "& { $(irm 'https://raw.githubusercontent.com/kristocopani/dotfiles/main/install.ps1') }"
 ```
 
 This will install:
