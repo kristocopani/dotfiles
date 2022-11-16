@@ -65,7 +65,7 @@ else {
 }
 
 if (Get-Module -ListAvailable -Name Terminal-Icons) {
-    Update-Module -Name Terminal-Iconst -Force
+    Update-Module -Name Terminal-Icons -Force
 } 
 else {
     Install-Module -Name Terminal-Icons -Repository PSGallery -Force
