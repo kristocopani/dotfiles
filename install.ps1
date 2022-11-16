@@ -99,25 +99,25 @@ if (!(Test-Path -Path $PROFILE)) {
     New-Item -ItemType File -Path $PROFILE -Force
   }
 
+#Download and Oh-My-Posh Theme
 $ohmyposhjsonpath = Split-Path -Path $profile -Parent 
-new-item -ItemType file -Path $json -Name "theme.json" -Force
+new-item -ItemType file -Path $ohmyposhjsonpath -Name "theme.json" -Force
 $ohmyposhgithub = Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/powerlevel10k_rainbow.omp.json' -UseBasicParsing
-Set-Content -Path  -Value $wtgithub.Content
+Set-Content -Path $ohmyposhjsonpath\theme.json -Value $ohmyposhgithub.Content
 
 #Set $PROFILE for PS
 Write-Host "Applying PowerShell Profile Settings"
 Clear-Content $PROFILE
 Add-Content $PROFILE "Import-Module -Name Terminal-Icons"
-Import-Module -Name PSReadline
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+Add-Content $PROFILE "Import-Module -Name PSReadline"
+Add-Content $PROFILE "Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete"
 Add-Content $PROFILE "clear"
-Add-Content $PROFILE "oh-my-posh init pwsh --config  | Invoke-Expression"
+Add-Content $PROFILE "oh-my-posh init pwsh --config $ohmyposhjsonpath\theme.json | Invoke-Expression"
 
 #Install Fonts
 Install-HackFonts
 
 #Apply JSON File for Windows Terminal
-
 Write-Host "Applying Windows Terminal Profile Settings"
 $wtjson = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
 $wtgithub = Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/kristocopani/dotfiles/main/settings.json' -UseBasicParsing
