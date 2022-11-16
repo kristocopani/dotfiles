@@ -1,7 +1,7 @@
 Function Install-HackFonts {
 
   BEGIN {
-      $address = "https://github.com/kristocopani/dotfiles/blob/main/fonts.zip"
+      $address = "https://github.com/kristocopani/dotfiles/raw/main/fonts.zip"
       $archive = "$($Env:TEMP)\HackFonts.zip"
       $folder = "$($Env:TEMP)\HackFonts"
 
@@ -50,15 +50,33 @@ Function Install-HackFonts {
 }
 
 #Update Modules
-Install-Module PSReadLine -Force
-Install-Module PowerShellGet -Force
-Install-Module -Name Terminal-Icons -Repository PSGallery -Force
+if (Get-Module -ListAvailable -Name PSReadLine) {
+    Update-Module -Name PSReadLine -Confirm $true -Force
+} 
+else {
+    Install-Module -Name PSReadLine -Confirm $true -Force
+}
+
+if (Get-Module -ListAvailable -Name PowerShellGet) {
+    Update-Module -Name PowerShellGet -Confirm $true -Force
+} 
+else {
+    Install-Module -Name PowerShellGet -Confirm $true -Force
+}
+
+if (Get-Module -ListAvailable -Name Terminal-Icons) {
+    Update-Module -Name Terminal-Iconst -Confirm $true -Force
+} 
+else {
+    Install-Module -Name Terminal-Icons -Repository PSGallery -Confirm $true -Force
+}
+
 
 #Install WinGet
-winget install --id Microsoft.WindowsTerminal -e
+winget install --id Microsoft.WindowsTerminal -e -h
 
 #Install Oh-My-Posh
-winget install JanDeDobbeleer.OhMyPosh -s winget
+winget install JanDeDobbeleer.OhMyPosh -s winget -h
 
 #Find if $PROFILE exists, else create it.
 if (!(Test-Path -Path $PROFILE)) {
