@@ -1,7 +1,7 @@
 Function Install-HackFonts {
 
   BEGIN {
-      $address = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip"
+      $address = "https://github.com/kristocopani/dotfiles/blob/main/fonts.zip"
       $archive = "$($Env:TEMP)\HackFonts.zip"
       $folder = "$($Env:TEMP)\HackFonts"
 
@@ -50,8 +50,9 @@ Function Install-HackFonts {
 }
 
 #Update Modules
-install-module PSReadLine -Force
+Install-Module PSReadLine -Force
 Install-Module PowerShellGet -Force
+Install-Module -Name Terminal-Icons -Repository PSGallery -Force
 
 #Install WinGet
 winget install --id Microsoft.WindowsTerminal -e
@@ -65,17 +66,15 @@ if (!(Test-Path -Path $PROFILE)) {
   }
 
 #Set $PROFILE for PS
+Add-Content $PROFILE "Import-Module -Name Terminal-Icons"
+Add-Content $PROFILE "clear"
 Add-Content $PROFILE "oh-my-posh init pwsh | Invoke-Expression"
-
-#Add Theme
-#oh-my-posh init pwsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/amro.omp.json' | Invoke-Expression
-#oh-my-posh init pwsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/powerlevel10k_rainbow.omp.json | Invoke-Expression
-
 Add-Content $PROFILE "oh-my-posh init pwsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/powerlevel10k_rainbow.omp.json | Invoke-Expression"
-
-#Reload $PROFILE
-#. $PROFILE
 
 #Install Fonts
 Install-HackFonts
 
+#Apply JSON File for Windows Terminal
+$jsonfile = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+$webContent = Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/kristocopani/dotfiles/main/settings.json'
+Set-Content -Path $jsonfile -Value $webContent.Content
