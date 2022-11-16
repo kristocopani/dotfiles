@@ -51,24 +51,24 @@ Function Install-HackFonts {
 
 #Update Modules
 if (Get-Module -ListAvailable -Name PSReadLine) {
-    Update-Module -Name PSReadLine -Confirm $true -Force
+    Update-Module -Name PSReadLine -Force
 } 
 else {
-    Install-Module -Name PSReadLine -Confirm $true -Force
+    Install-Module -Name PSReadLine -Force
 }
 
 if (Get-Module -ListAvailable -Name PowerShellGet) {
-    Update-Module -Name PowerShellGet -Confirm $true -Force
+    Update-Module -Name PowerShellGet -Force
 } 
 else {
-    Install-Module -Name PowerShellGet -Confirm $true -Force
+    Install-Module -Name PowerShellGet -Force
 }
 
 if (Get-Module -ListAvailable -Name Terminal-Icons) {
-    Update-Module -Name Terminal-Iconst -Confirm $true -Force
+    Update-Module -Name Terminal-Iconst -Force
 } 
 else {
-    Install-Module -Name Terminal-Icons -Repository PSGallery -Confirm $true -Force
+    Install-Module -Name Terminal-Icons -Repository PSGallery -Force
 }
 
 
