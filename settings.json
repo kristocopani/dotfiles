@@ -37,24 +37,29 @@
     {
         "defaults": 
         {
-            "antialiasingMode": "cleartype",
+            "antialiasingMode": "grayscale",
             "colorScheme": "Glacier",
             "cursorShape": "bar",
+            "elevate": true,
             "font": 
             {
                 "face": "Hack NF",
                 "weight": "light"
             },
             "opacity": 75,
+            "suppressApplicationTitle": true,
             "useAcrylic": true
         },
         "list": 
         [
             {
+                "antialiasingMode": "grayscale",
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
-                "name": "Windows PowerShell"
+                "name": "Windows PowerShell",
+                "opacity": 95,
+                "suppressApplicationTitle": false
             },
             {
                 "commandline": "%SystemRoot%\\System32\\cmd.exe",
@@ -304,5 +309,6 @@
         }
     ],
     "showTabsInTitlebar": true,
+    "theme": "dark",
     "useAcrylicInTabRow": true
 }
