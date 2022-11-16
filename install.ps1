@@ -99,10 +99,10 @@ if (!(Test-Path -Path $PROFILE)) {
     New-Item -ItemType File -Path $PROFILE -Force
   }
 
-$ohmyposhjsonpath = Set-Location(Split-Path -Path $profile)  
-New-Item -ItemType file -Path $ohmyposhjsonpath\theme.json -Force
+$ohmyposhjsonpath = Split-Path -Path $profile -Parent 
+new-item -ItemType file -Path $json -Name "theme.json" -Force
 $ohmyposhgithub = Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/powerlevel10k_rainbow.omp.json' -UseBasicParsing
-
+Set-Content -Path  -Value $wtgithub.Content
 
 #Set $PROFILE for PS
 Write-Host "Applying PowerShell Profile Settings"
