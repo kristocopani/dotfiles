@@ -22,5 +22,6 @@ This will install:
 
 **Warning**: this script is designed to setup a new machine and installs a custom PowerShell profile. Please backup your existing `$profile` file before running this script.
 
-
-
+```bash
+bash <(curl -Ls https://raw.githubusercontent.com/kristocopani/dotfiles/main/script.sh)
+```
