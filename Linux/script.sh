@@ -35,7 +35,7 @@ function installautosuggest() {
         echo "Zsh AutoSuggestions is installed"
     else
         echo "Installing Zsh AutoSuggestions"
-        git clone https://github.com/zsh-users/zsh-autosuggestions $/home/${USER}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
         if [ -d "/home/${USER}/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
             echo "Zsh AutoSuggestions installed"
         else
@@ -49,7 +49,7 @@ function installsyntax() {
         echo "Zsh Syntax Highlighting is installed"
     else
         echo "Installing Zsh Syntax Highlighting"
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $/home/${USER}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
         if [ -d "$/home/${USER}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
             echo "Zsh Syntax Highlighting installed"
         else
