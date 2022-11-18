@@ -60,7 +60,7 @@ function installsyntax() {
 
 
 sudo apt-get update -qq -y >/dev/null && sudo apt-get upgrade -qq -y
-installzsh
-installohmyzsh
+sudo installzsh
+sudo installohmyzsh
 installautosuggest
 installsyntax
