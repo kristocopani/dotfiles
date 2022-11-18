@@ -1,7 +1,7 @@
 Function Install-HackFonts {
 
   BEGIN {
-      $address = "https://github.com/kristocopani/dotfiles/raw/main/fonts.zip"
+      $address = "https://github.com/kristocopani/dotfiles/blob/main/Windows%20Terminal/fonts.zip"
       $archive = "$($Env:TEMP)\HackFonts.zip"
       $folder = "$($Env:TEMP)\HackFonts"
 
@@ -99,7 +99,7 @@ if (!(Test-Path -Path $PROFILE)) {
     New-Item -ItemType File -Path $PROFILE -Force
   }
 
-#Download and Oh-My-Posh Theme
+#Download and set Oh-My-Posh Theme
 $ohmyposhjsonpath = Split-Path -Path $profile -Parent 
 new-item -ItemType file -Path $ohmyposhjsonpath -Name "theme.json" -Force
 $ohmyposhgithub = Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/powerlevel10k_rainbow.omp.json' -UseBasicParsing
@@ -114,11 +114,11 @@ Add-Content $PROFILE "Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete"
 Add-Content $PROFILE "clear"
 Add-Content $PROFILE "oh-my-posh init pwsh --config '$ohmyposhjsonpath\theme.json' | Invoke-Expression"
 
-#Install Fonts
-Install-HackFonts
-
 #Apply JSON File for Windows Terminal
 Write-Host "Applying Windows Terminal Profile Settings"
 $wtjson = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
-$wtgithub = Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/kristocopani/dotfiles/main/settings.json' -UseBasicParsing
+$wtgithub = Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/kristocopani/dotfiles/main/Windows%20Terminal/settings.json' -UseBasicParsing
 Set-Content -Path $wtjson -Value $wtgithub.Content
+
+#Install Fonts
+Install-HackFonts
