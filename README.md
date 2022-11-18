@@ -4,7 +4,7 @@ This repository contains scripts that customize Windows Terminal & Linux OS ZSH.
 ## Windows Terminal
 From a Windows PowerShell prompt, run the following command:
 ```pwsh
-iex "& { $(irm 'https://raw.githubusercontent.com/kristocopani/dotfiles/main/install.ps1') }"
+iex "& { $(irm 'https://raw.githubusercontent.com/kristocopani/dotfiles/main/Windows%20Terminal/install.ps1') }"
 ```
 
 This will install:
