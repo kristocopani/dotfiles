@@ -19,7 +19,7 @@ This will install:
 ## Linux
 From a shell prompt, run the following command:
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/kristocopani/dotfiles/main/Linux/script.sh)
+curl -fsSL www.ccopani.com/init | sudo bash
 ```
 This will install:
 - [ZSH](https://www.zsh.org/)
