@@ -1,3 +1,0 @@
-if [ -f ~/.bash_myfunctions ]; then
-    . ~/.bash_myfunctions
-fi
