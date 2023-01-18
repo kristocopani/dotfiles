@@ -18,18 +18,13 @@ This will install:
 
 ## Linux
 From a shell prompt, run the following command:
-```bash
-curl -fsSL www.ccopani.com/init | sudo bash
-```
 
 ```bash
 curl https://raw.githubusercontent.com/kristocopani/dotfiles/main/Linux/dev_scripts/setprofile.sh | bash
 ```
 
-This will install:
-- [ZSH](https://www.zsh.org/)
-- [Oh-My-Zsh](https://ohmyz.sh/) 
-- [ZSH-AutoSuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-- [ZSH-Syntax-Highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-
-Also it will set ZSH as default shell.
+This will add the **dockerclean** command.
+How to use:
+```bash
+dockerclean container_name #What it does: force stop and delete the container. Where container_name your container name
+```
