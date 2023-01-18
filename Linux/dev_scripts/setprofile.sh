@@ -7,9 +7,9 @@ curl -LJO https://raw.githubusercontent.com/kristocopani/dotfiles/main/Linux/dev
 mv bash_myfunctions.txt ~/.bash_myfunctions
 
 # Append the contents of the aliases file to the .bashrc file
-#if [ -f ~/.bash_myfunctions ]; then
-#    cat ./bashrc >> ~/.bashrc
-#fi
+if [ -f ~/.bash_myfunctions ]; then
+    curl -LJO https://raw.githubusercontent.com/kristocopani/dotfiles/main/Linux/dev_scripts/bashrc.txt >> ~/.bashrc
+fi
 
 # Source the .bashrc file
-#source ~/.bashrc
+source ~/.bashrc
