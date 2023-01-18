@@ -1,5 +1,5 @@
 # Overview
-This repository contains scripts that customize Windows Terminal & Linux OS ZSH.
+This repository contains scripts that customize Windows Terminal & Bash Terminal.
 
 ## Windows Terminal
 From a Windows PowerShell prompt, run the following command:
