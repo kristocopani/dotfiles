@@ -21,6 +21,11 @@ From a shell prompt, run the following command:
 ```bash
 curl -fsSL www.ccopani.com/init | sudo bash
 ```
+
+```bash
+curl https://raw.githubusercontent.com/kristocopani/dotfiles/main/Linux/dev_scripts/setprofile.sh | bash
+```
+
 This will install:
 - [ZSH](https://www.zsh.org/)
 - [Oh-My-Zsh](https://ohmyz.sh/) 
