@@ -100,10 +100,10 @@ if (!(Test-Path -Path $PROFILE)) {
   }
 
 #Download and set Oh-My-Posh Theme
-$ohmyposhjsonpath = Split-Path -Path $profile -Parent 
-new-item -ItemType file -Path $ohmyposhjsonpath -Name "theme.json" -Force
-$ohmyposhgithub = Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/powerlevel10k_rainbow.omp.json' -UseBasicParsing
-Set-Content -Path $ohmyposhjsonpath\theme.json -Value $ohmyposhgithub.Content
+#$ohmyposhjsonpath = Split-Path -Path $profile -Parent 
+#new-item -ItemType file -Path $ohmyposhjsonpath -Name "theme.json" -Force
+#$ohmyposhgithub = Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/powerlevel10k_rainbow.omp.json' -UseBasicParsing
+#Set-Content -Path $ohmyposhjsonpath\theme.json -Value $ohmyposhgithub.Content
 
 #Set $PROFILE for PS
 Write-Host "Applying PowerShell Profile Settings"
@@ -111,8 +111,9 @@ Clear-Content $PROFILE
 Add-Content $PROFILE "Import-Module -Name Terminal-Icons"
 Add-Content $PROFILE "Import-Module -Name PSReadline"
 Add-Content $PROFILE "Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete"
+Add-Content $PROFILE "Set-PSReadLineOption -PredictionSource History"
+Add-Content $PROFILE "Set-PoshPrompt -Theme craver"
 Add-Content $PROFILE "clear"
-Add-Content $PROFILE "oh-my-posh init pwsh --config '$ohmyposhjsonpath\theme.json' | Invoke-Expression"
 
 #Apply JSON File for Windows Terminal
 Write-Host "Applying Windows Terminal Profile Settings"
