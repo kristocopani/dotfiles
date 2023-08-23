@@ -1,0 +1,15 @@
+services:
+  CONTAINERNAME:
+    image: IMAGE
+    container_name: CONTAINERNAME
+    volumes:
+      - VOLUME
+    ports:
+      - PORT:PORT
+    restart: unless-stopped
+    networks:
+      - NETWORK
+
+networks:
+  NETWORK:
+    external: true
