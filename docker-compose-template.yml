@@ -2,6 +2,7 @@ services:
   CONTAINERNAME:
     image: IMAGE
     container_name: CONTAINERNAME
+    #network_mode: host
     volumes:
       - VOLUME
     ports:
@@ -9,6 +10,10 @@ services:
     restart: unless-stopped
     networks:
       - NETWORK
+    #environment:
+      #- TZ=Europe/Athens
+      #- 
+      #-
 
 networks:
   NETWORK:
