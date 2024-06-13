@@ -9,7 +9,7 @@ $StarshipSettings = (wget "https://raw.githubusercontent.com/kristocopani/dotfil
 # ---------------------------------------------------------------------------- #
 #                                Download Fonts                                #
 # ---------------------------------------------------------------------------- #
-wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/CascadiaCode.zip" -outfile "%LOCALAPPDATA%\CascadiaCode.zip"
+wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/CascadiaCode.zip" -outfile "$env:LOCALAPPDATA\CascadiaCode.zip"
 Expand-Archive $env:LOCALAPPDATA\CascadiaCode.zip -DestinationPath $env:LOCALAPPDATA\CascadiaCode
 
 # ---------------------------------------------------------------------------- #
