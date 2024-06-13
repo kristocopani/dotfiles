@@ -2,7 +2,7 @@
 #                                   Variables                                  #
 # ---------------------------------------------------------------------------- #
 $Settings = (wget https://raw.githubusercontent.com/kristocopani/dotfiles/main/terminalsettings.json).Content
-$TerminalFolder = "%localappdata%Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\"
+$TerminalFolder = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\"
 $TerminalSettings = "settings.json"
 $StarshipSettings = (wget "https://raw.githubusercontent.com/kristocopani/dotfiles/main/starship.toml").Content
 
@@ -10,12 +10,12 @@ $StarshipSettings = (wget "https://raw.githubusercontent.com/kristocopani/dotfil
 #                                Download Fonts                                #
 # ---------------------------------------------------------------------------- #
 wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/CascadiaCode.zip" -outfile "%LOCALAPPDATA%\CascadiaCode.zip"
-Expand-Archive %LOCALAPPDATA%\CascadiaCode.zip -DestinationPath %LOCALAPPDATA\CascadiaCode
+Expand-Archive $env:LOCALAPPDATA\CascadiaCode.zip -DestinationPath $env:LOCALAPPDATA\CascadiaCode
 
 # ---------------------------------------------------------------------------- #
 #                                 Install Fonts                                #
 # ---------------------------------------------------------------------------- #
-Set-Location %LOCALAPPDATA%\CascadiaCode
+Set-Location $env:LOCALAPPDATA\CascadiaCode
 $fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)
 foreach ($file in gci *.ttf)
 {
