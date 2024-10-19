@@ -1,0 +1,43 @@
+# Secure SSHD
+Port 2220
+Protocol 2 # disable protocol 1 (insecure)
+PermitRootLogin no
+PermitUserEnvironment no
+
+# Encryption Standards
+#force usage of non-compromised hashes
+Ciphers aes256-gcm@openssh.com,aes128-gcm@openssh.com
+HostKeyAlgorithms rsa-sha2-512,rsa-sha2-256,ssh-ed25519
+MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com
+KexAlgorithms sntrup761x25519-sha512@openssh.com,curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group18-sha512,diffie-hellman-group16-sha512
+
+# Disabled Authentication
+PasswordAuthentication no
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+HostbasedAuthentication no
+IgnoreUserKnownHosts no
+
+# Enabled Authentication
+PubkeyAuthentication yes
+#HostKey /etc/ssh/ssh_host_rsa_key
+#AuthorizedKeysFile .ssh/authorized_keys
+
+# Login Settings
+LoginGraceTime 30
+StrictModes yes
+MaxAuthTries 5 #we use pki - no errors should occur
+MaxSessions 2 #only two computers will ever be running this service
+MaxStartups 2
+ClientAliveInterval 300 #check connection after 300s/5minutes
+ClientAliveCountMax 1
+
+#General Options
+AllowTcpForwarding no
+GatewayPorts no
+X11Forwarding no
+TCPKeepAlive yes
+PermitTunnel no
+
+#Enable SFTP
+Subsystem internal-sftp
