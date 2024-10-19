@@ -40,4 +40,4 @@ TCPKeepAlive yes
 PermitTunnel no
 
 #Enable SFTP
-Subsystem internal-sftp
+Subsystem sftp internal-sftp
